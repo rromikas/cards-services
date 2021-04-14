@@ -18,8 +18,8 @@ const handler = async (event, context) => {
     });
 
     const response = await transporter.sendMail({
-      from: process.env.email,
-      to: process.env.email,
+      from: process.env.EMAIL,
+      to: process.env.EMAIL,
       subject: `uCard Elite user(${body.email}) message`,
       html: body.message,
     });
