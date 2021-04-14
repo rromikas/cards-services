@@ -13,6 +13,7 @@ You need to set 2 env variables:
 EMAIL  
 EMAIL_PASSWORD  
 Variables must be from your **gmail** account since api uses gmail service
+
 For this to work complete 2 steps:
 
 1. "allow less secure apps to access gmail" must be turned on.
