@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="85.6mm" height="53.98mm" viewBox="0 0 85.6 53.98" fill="white">
-    <rect x="0" y="0" width="85.6" height="53.98" stroke="black" stroke-width="0.5"></rect>
+    <rect x="0" y="0" width="85.6" height="53.98" stroke="black" stroke-width="0.3" rx="3.5"></rect>
     <g id="card-content" transform="translate(0, 4)">
         <rect y="0.979279" width="85.6" height="8.99916" fill="#282828"/>
         <path d="M48.2681 15.0869H47.3257V14.7221H48.7328V14.9479L48.0814 18.24H47.634L48.2681 15.0869ZM49.9435 15.0869H49.001V14.7221H50.4082V14.9479L49.7567 18.24H49.3094L49.9435 15.0869ZM51.6188 15.0869H50.6763V14.7221H52.0835V14.9479L51.432 18.24H50.9847L51.6188 15.0869Z" fill="#282828"/>

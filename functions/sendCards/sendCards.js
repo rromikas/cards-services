@@ -10,17 +10,26 @@ const readSvg = (fileName) => {
   });
 };
 
-const svgCardTemplate = async ({ provider = "visa", numberOnFront = true, name }) => {
+const svgCardTemplate = async ({
+  provider = "visa",
+  numberOnFront = true,
+  name,
+  logoText,
+  logoTextSize,
+}) => {
   const options = { x: 0, y: 0, fontSize: 4.79, anchor: "top", attributes: { fill: "black" } };
 
   const textToSVG = TextToSVG.loadSync(require.resolve("./Oswald-Regular.ttf"));
   const namePath = textToSVG.getPath(name, options);
+  const fontSize = logoTextSize * 0.19;
+  const customTextPath = textToSVG.getPath(logoText, { ...options, fontSize });
   const cardBackNoNumber = await readSvg("./card-back-withoutNR.svg");
   const cardBackWithNumber = await readSvg("./card-back-withNR.svg");
 
   return {
     front: `<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" width="85.6mm" height="53.98mm" viewBox="0 0 85.6 53.98" fill="white">
-  <rect x="0" y="0" width="85.6" height="53.98" stroke="black" stroke-width="0.5"></rect>
+  <rect x="0" y="0" width="85.6" height="53.98" stroke="black" stroke-width="0.3" rx="3.5"></rect>
+  <g id="logoText" transform="translate(2,2)">${customTextPath}</g>
   <g id="lust" transform="translate(8,14)">
       <path d="M11.3059 0.186279H1.93797C1.37339 0.186279 0.91571 0.667514 0.91571 1.26115V6.96913C0.91571 7.56277 1.37339 8.044 1.93797 8.044H11.3059C11.8704 8.044 12.3281 7.56277 12.3281 6.96913V1.26115C12.3281 0.667514 11.8704 0.186279 11.3059 0.186279Z" stroke="black" stroke-width="0.165"/>
   </g>
@@ -83,6 +92,8 @@ const handler = async (event, context) => {
       provider: body.provider || "visa",
       numberOnFront: typeof body.numberOnFront === "boolean" ? body.numberOnFront : true,
       name: body.name.toUpperCase() || "YOUR FULL NAME",
+      logoText: body.logoText || "",
+      logoTextSize: body.logoTextSize || 18,
     });
 
     const response = await transporter.sendMail({
